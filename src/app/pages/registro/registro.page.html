@@ -1,0 +1,23 @@
+
+<ion-content style=" border-left: 7px solid #ff987b">
+  <div class="header">
+    <h3>Bienvenido!</h3>
+    <h1>Registro</h1>
+  </div>
+
+  <div class="form">
+    <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-input placeholder="Nombre" formControlName="nombre"></ion-input>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+    </form>
+  </div>
+
+  <div class="registro" >
+    <ion-button (click)="guardar()" style="--background: #ff987b; margin: 0 auto;">Registro</ion-button>
+  </div>
+
+  <div class="footer registro-footer">
+    <h3 routerLink="/login">¿Tienes cuenta ya? <span>Inicia Aqui</span></h3>
+  </div>
+</ion-content>

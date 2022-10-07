@@ -1,0 +1,21 @@
+<ion-content>
+  <div class="header">
+    <h3>Bienvenido!</h3>
+    <h1>Iniciar Sesion</h1>
+  </div>
+
+  <div class="form">
+    <form action="" [formGroup]="formularioLogin" (keyup.enter)="ingresar()">
+      <ion-input type="email" placeholder="email" formControlName="email"></ion-input>
+      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+    </form>
+  </div>
+
+  <div class="button" style="margin: 0 auto;">
+    <ion-button (click)="ingresar()">Iniciar</ion-button>
+  </div>
+
+  <div class="footer">
+    <h3 [routerLink]="['/registro']">¿No tienes cuenta? <span>Registrate Aqui</span></h3>
+  </div>
+</ion-content>
