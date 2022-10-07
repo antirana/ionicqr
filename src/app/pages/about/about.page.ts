@@ -6,27 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
-  logo:string;
-  foto:string;
   private about = [
     {
       id:'1',
       nombre:'Bastian Lisboa',
-      descripcion:'el mas lanzao',
+      descripcion:'Tengo 22 años,Estudio en Duoc UC, me gusta jugar videojuegos y conocer lugares',
       imagen: 'assets/about_3.jpeg  '
 
     },
     {
       id:'2',
       nombre:'Nicolas Ruiz',
-      descripcion:'el mas malvao',
+      descripcion:'Tengo 19 años interesado en el   desarrollo de aplicaciones movil y web',
       imagen:'assets/about_1.jpeg'
 
     },
     {
       id:'3',
       nombre:'Cristhian Barreno',
-      descripcion:'Interesado en el amor y la ciber seguridad',
+      descripcion:'Tengo 22 años interesado en   la ciberseguridad',
       imagen:'assets/about_2.jpeg'
 
     }
@@ -36,8 +34,7 @@ export class AboutPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.logo ="https://cdn.freebiesupply.com/logos/large/2x/visa-logo-png-transparent.png";
-    this.foto="https://pbs.twimg.com/profile_images/1074190898198659076/qaqhySAU_400x400.jpg";
+
   }
 
 }
