@@ -5,14 +5,21 @@
   </div>
 
   <div class="form">
-    <form action="" [formGroup]="formularioLogin" (keyup.enter)="ingresar()">
+    <form (ngSubmit)="login()"  [formGroup]="formularioLogin">
+      <ion-item class="ion-margin-bottom">
       <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Formato Email no válido</ion-note>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
       <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors">El password debe contener al menos 6 caracteres</ion-note>
+    </ion-item>
     </form>
   </div>
 
   <div class="button" style="margin: 0 auto;">
-    <ion-button (click)="ingresar()">Iniciar</ion-button>
+    <ion-button expand="full" (click)="login()" type="submit" [disabled]="!formularioLogin.valid">Login</ion-button>
   </div>
 
   <div class="footer">

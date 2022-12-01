@@ -5,7 +5,10 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -13,23 +16,60 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  formularioLogin: FormGroup;
+  
+  formularioLogin!: FormGroup;
 
   constructor(
-    public fb: FormBuilder,
-    public alertController: AlertController,
-    public navCtrl: NavController,
-    public loadingCtrl: LoadingController
-  ) { 
-    this.formularioLogin = this.fb.group({
-      'email': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required)
-    });
-  }
+    private formBuilder:FormBuilder,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private authService: AuthService,
+    private router: Router)
+    {}
+  
 
   ngOnInit() {
+    this.createForm();
   }
+
+    get email(){
+      return this.formularioLogin?.get('email');
+    }
+  
+    get password(){
+      return this.formularioLogin?.get('password');
+    }
+    createForm(){
+      this.formularioLogin = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+      })
+    }
+    async login(){
+      const loading = await this.loadingCtrl.create();
+      await loading.present();
+      const user = await this.authService.login(this.formularioLogin.value.email,this.formularioLogin.value.password);
+      await loading.dismiss();
+  
+      if(user){
+        this.alertPresent('Bienvenido ', this.formularioLogin.value.email);
+        this.router.navigateByUrl('/home');
+      }
+      else{
+        this.alertPresent('Ingreso fallido','Revise bien los datos ingresado');
+      }
+    }
+    async alertPresent(header:string,message:string){
+      const alert = await this.alertCtrl.create({
+        header:header,
+        message:message,
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+   
+
+  
 
 
   
@@ -41,34 +81,6 @@ export class LoginPage implements OnInit {
 
     loading.present();
   }
-
-  async ingresar(){
-    var f = this.formularioLogin.value;
-
-    var usuario = JSON.parse(localStorage.getItem('usuario'));
-
-    if(usuario.email == f.email && usuario.password == f.password){
-      //console.log('funciona');
-      localStorage.setItem('ingresado','true');
-      this.navCtrl.navigateRoot('home');
-      
-        const loading = await this.loadingCtrl.create({
-          duration: 2000,
-        });
-    
-        loading.present();
-      
-
-    }else{
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'Datos incorrectos',
-        buttons: ['Aceptar'],
-      });
-
-      await alert.present();
-      return;
-    }
-  }
+  
 
 }
