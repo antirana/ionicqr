@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {redirectLoggedInTo, redirectUnauthorizedTo, canActivate} from '@angular/fire/auth-guard'
+
+const redirectUnauthorizedToLogin= () => redirectUnauthorizedTo(['']);
+const redirectLoggedInToHome= () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -17,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
   },
   {
     path: 'registro',
@@ -36,20 +40,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
   {
-    path: 'clima',
-    loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
-  },
-  {
-    path: 'monedas',
-    loadChildren: () => import('./pages/monedas/monedas.module').then( m => m.MonedasPageModule)
-  },
-  {
     path: 'error',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
-
-
-
+  {
+    path: 'cuenta',
+    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+  },
 
 ];
 

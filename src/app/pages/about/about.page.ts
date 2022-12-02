@@ -8,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class AboutPage implements OnInit {
   private about = [
     {
+      id:'1',
+      nombre:'Bastian Lisboa',
+      descripcion:'Tengo 22 años,Estudio en Duoc UC, me gusta jugar videojuegos y conocer lugares',
+      imagen: 'assets/about_3.jpeg  '
+
+    },
+    {
       id:'2',
       nombre:'Nicolas Ruiz',
       descripcion:'Tengo 19 años interesado en el   desarrollo de aplicaciones movil y web',

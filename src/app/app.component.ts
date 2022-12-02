@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { Auth, EmailAuthCredential, user, User, signOut } from '@angular/fire/auth';
+import { Auth, EmailAuthCredential, user, User, signOut} from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 @Component({
   selector: 'app-root',
@@ -18,7 +18,6 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'About', url: '/about', icon: 'information-circle' },
     { title: 'QR', url:'/codigo', icon:'qr-code'},
-    { title: 'Clima', url:'/clima', icon:'sunny'},
     { title: 'Cuenta', url: '/folder/Cuenta', icon: 'person-circle' },
     { title: 'Salir', url:'/login' ,icon:'log-out'},
   ];
@@ -31,11 +30,10 @@ export class AppComponent {
     private firestore: Firestore,
     private platform: Platform,
     public router: Router,
-    
+
 
     
   ) {this.initializeApp();
-    this.getUserProfile();
   }
 
   initializeApp(){
@@ -51,7 +49,9 @@ export class AppComponent {
     
     
   }
-  async logout(){
+  logout(){
+    this.router.navigateByUrl('login');
     return signOut(this.auth);
+
   }
 }

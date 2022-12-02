@@ -43,7 +43,8 @@ export class HomePage {
   async addUsuario(){
 
     const alert = await this.alertCtrl.create({
-      header:'Completar datos',
+      header:'Completar datos del usuario',
+
       inputs:[
         {
           name:"name",
