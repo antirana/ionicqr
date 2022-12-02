@@ -52,14 +52,11 @@ const routes: Routes = [
     path: 'error',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
-<<<<<<< Updated upstream
-=======
   {
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
 
->>>>>>> Stashed changes
 
 
 
