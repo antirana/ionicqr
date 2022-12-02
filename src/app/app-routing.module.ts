@@ -35,6 +35,23 @@ const routes: Routes = [
     path: 'codigo',
     loadChildren: () => import('./pages/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
+  {
+    path: 'clima',
+    loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./pages/app/app.module').then( m => m.AppPageModule)
+  },  {
+    path: 'monedas',
+    loadChildren: () => import('./pages/monedas/monedas.module').then( m => m.MonedasPageModule)
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+
+
 ];
 
 @NgModule({

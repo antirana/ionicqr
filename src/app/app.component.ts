@@ -18,6 +18,7 @@ export class AppComponent {
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'About', url: '/about', icon: 'information-circle' },
     { title: 'QR', url:'/codigo', icon:'qr-code'},
+    { title: 'Clima', url:'/clima', icon:'sunny'},
     { title: 'Cuenta', url: '/folder/Cuenta', icon: 'person-circle' },
     { title: 'Salir', url:'/login' ,icon:'log-out'},
   ];
@@ -30,10 +31,11 @@ export class AppComponent {
     private firestore: Firestore,
     private platform: Platform,
     public router: Router,
-
+    
 
     
   ) {this.initializeApp();
+    this.getUserProfile();
   }
 
   initializeApp(){
