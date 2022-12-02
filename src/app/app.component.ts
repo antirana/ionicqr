@@ -47,11 +47,9 @@ export class AppComponent {
   async getUserProfile(){
     const user = this.auth.currentUser;
     this.email = user.email;
-    console.log(this.email);
-    
-    
   }
   async logout(){
     return signOut(this.auth);
   }
+
 }
