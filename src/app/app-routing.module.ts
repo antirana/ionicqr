@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {redirectLoggedInTo, redirectUnauthorizedTo, canActivate} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin= () => redirectUnauthorizedTo(['']);
+const redirectLoggedInToHome= () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -17,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    ...canActivate(redirectLoggedInToHome)
   },
   {
     path: 'registro',
@@ -47,6 +52,14 @@ const routes: Routes = [
     path: 'error',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
+<<<<<<< Updated upstream
+=======
+  {
+    path: 'cuenta',
+    loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
+  },
+
+>>>>>>> Stashed changes
 
 
 
