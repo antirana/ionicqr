@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Clima</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main">
+    <span class="city">{{res.name}}</span>
+    <span class="date">01/12</span>
+
+    <div class="icon">
+      <img src="../../../assets/img/cloudy.png" alt="">
+
+      <span class="description">{{res.weather[0].description}}</span>
+      <span class="temperature">{{(res.main.temp- 273.15).toFixed(0)}}°c</span>
+    </div>
+
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="day">Viernes</ion-col>
+      <ion-col class="day">Sabado</ion-col>
+      <ion-col class="day">Domingo</ion-col>
+      <ion-col class="day">Lunes</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="precipitation">60%</ion-col>
+      <ion-col class="precipitation">-</ion-col>
+      <ion-col class="precipitation">20%</ion-col>
+      <ion-col class="precipitation">60%</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col class="icon-sm"><img src="../../../assets/img/sunny(1).png" alt=""></ion-col>
+      <ion-col class="icon-sm"><img src="../../../assets/img/sunny(1).png" alt=""></ion-col>
+      <ion-col class="icon-sm"><img src="../../../assets/img/sunny(1).png" alt=""></ion-col>
+      <ion-col class="icon-sm"><img src="../../../assets/img/sunny(1).png" alt=""></ion-col>
+    </ion-row>
+
+    <!--MAXIMA TEMPERATURA-->
+    <ion-row>
+      <ion-col class="hi-sm">{{(res.main.temp_max - 273.15).toFixed(0)}}°c</ion-col>
+      <ion-col class="hi-sm">25°c</ion-col>
+      <ion-col class="hi-sm">25°c</ion-col>
+      <ion-col class="hi-sm">25°c</ion-col>
+    </ion-row>
+
+    <!--MAXIMA TEMPERATURA-->
+    <ion-row>
+      <ion-col class="lo-sm">{{(res.main.temp_min - 273.15).toFixed(0)}}°c</ion-col>
+      <ion-col class="lo-sm">15°c</ion-col>
+      <ion-col class="lo-sm">15°c</ion-col>
+      <ion-col class="lo-sm">15°c</ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
