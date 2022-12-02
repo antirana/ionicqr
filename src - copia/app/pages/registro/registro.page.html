@@ -1,0 +1,29 @@
+
+<ion-content style=" border-left: 7px solid #ff987b">
+  <div class="header">
+    <h3>Bienvenido!</h3>
+    <h1>Registro</h1>
+  </div>
+
+  <div class="form">
+    <form  (ngSubmit)="register()" [formGroup]="formularioRegistro" >
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Formato Email no válido</ion-note>
+      </ion-item>
+  
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors">El password debe contener al menos 6 caracteres</ion-note>
+      </ion-item>
+    </form>
+  </div>
+
+  <div class="registro" >
+    <ion-button (click)="register()" style="--background: #ff987b; margin: 0 auto;">Registro</ion-button>
+  </div>
+
+  <div class="footer registro-footer">
+    <h3 routerLink="/login">¿Tienes cuenta ya? <span>Inicia Aqui</span></h3>
+  </div>
+</ion-content>

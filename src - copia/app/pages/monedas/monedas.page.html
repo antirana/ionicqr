@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Monedas</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [fullscreen]="true">
+  <div class="main_content_div">
+    <div class="content_div">
+      <ion-label class="label">Convertidor de monedas</ion-label>
+      <ion-grid fixed> 
+        <ion-row>
+          <ion-col size="4">
+            <div class="col_div">
+              <img src="../../../assets/img/coin.png" alt="">
+              <span class="nombre">{{res.dolar.nombre}}</span>
+              <span class="precio">$ {{res.dolar.valor}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="col_div">
+              <img src="../../../assets/img/euro.png" alt="">
+              <span class="nombre">{{res.euro.nombre}}</span>
+              <span class="precio">$ {{res.euro.valor}}</span>
+            </div>
+          </ion-col>
+
+          
+          <ion-col size="4">
+            <div class="col_div">
+              <img src="../../../assets/img/bitcoin.png" alt="">
+              <span class="nombre">{{res.bitcoin.nombre}}</span>
+              <span class="precio">$ {{res.bitcoin.valor}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="col_div">
+              <span class="nombre">{{res.ipc.nombre}}</span>
+              <span class="precio">{{res.ipc.valor}}</span>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="col_div">
+              <span class="nombre">{{res.uf.nombre}}</span>
+              <span class="precio">{{res.uf.valor}}</span>
+            </div>
+          </ion-col>
+
+          
+          <ion-col size="4">
+            <div class="col_div">
+              <span class="nombre">{{res.utm.nombre}}</span>
+              <span class="precio">{{res.utm.valor}}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
+

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>about</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <h1 class="ion-text-center">Sobre nosotros</h1>
+ <br>
+
+    <ion-img class="logoabout" tyle="margin: 0 auto;" src="../assets/logo.png"></ion-img>
+
+  <h3 class="ion-text-center">Equipo</h3>
+    <ion-list >
+    <ion-slides >
+
+      <ion-slide *ngFor="let nosotros of about">
+
+          <ion-card>
+            <div >
+              <ion-img [src]="nosotros.imagen" class="foto"></ion-img>
+            <ion-card-header>
+              <ion-card-subtitle>Ingeniera en Informatica</ion-card-subtitle>
+              <ion-card-title class="titulo">{{nosotros.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{nosotros.descripcion}}
+            </ion-card-content>
+            </div>
+          </ion-card>
+
+      </ion-slide>
+
+    </ion-slides>
+  </ion-list>
+
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <ion-title>Contacto</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+
+      <ion-text>Si te quieres comunicar con nosotros, puedes escribirnos directamente a contacto@duocuc.cl</ion-text>
+    </ion-toolbar>
+  </ion-footer>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-text>RegistrAPP | Version 1.0</ion-text>
+    </ion-toolbar>
+  </ion-footer> 
+
+</ion-content>
