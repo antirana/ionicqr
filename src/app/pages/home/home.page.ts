@@ -12,20 +12,19 @@ import { AvatarService } from 'src/app/services/avatar.service';
 export class HomePage {
   Uid:string;
   usuario: Usuario = {
-    uid:'',
-    id:'',
-    name:'',
+    uid: '',
+    name: '',
     lastname: '',
     gender: '',
     age: null,
     email: '',
     celular: '',
-    image: '',
     direccion: '',
     carrera: '',
-    descripcion: ''
-
+    descripcion: '',
+    privilegio: ''
   };
+
 
   constructor(private auth: Auth,private usuarioService:UsuarioService, private alertCtrl:AlertController,
     private modalCtrl:ModalController, private toastCtrl:ToastController
@@ -81,11 +80,6 @@ export class HomePage {
           placeholder:"correo@correo.com"
         },
         {
-          name:"image",
-          type:"url",
-          placeholder:"Link image"
-        },
-        {
           name:"carrera",
           type:"text",
           placeholder:"carrera"
@@ -95,6 +89,7 @@ export class HomePage {
           type:"text",
           placeholder:"descripcion"
         },
+
       ],
       buttons: [
         {
@@ -105,6 +100,7 @@ export class HomePage {
           text:'Save',
           role:'confirm',
           handler:(data) => { 
+
                               this.usuario.uid= this.Uid;
                               this.usuario.name= data.name;
                               this.usuario.lastname= data.lastname;
@@ -112,12 +108,11 @@ export class HomePage {
                               this.usuario.age= data.age;
                               this.usuario.email= data.email;
                               this.usuario.celular= data.celular;
-                              this.usuario.image= data.image;
                               this.usuario.direccion= data.direccion;
                               this.usuario.carrera= data.carrera;
                               this.usuario.descripcion= data.descripcion;
-
-            this.usuarioService.addUsuario(data);
+                              this.usuario.privilegio = "alumno";
+            this.usuarioService.addUsuario(this.usuario);
             this.toasPresent('Datos del usuario añadido');
 
           }

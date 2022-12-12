@@ -5,8 +5,10 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 
 import { AlertController,IonButton,NavController,LoadingController} from '@ionic/angular';
@@ -25,6 +27,7 @@ export class RegistroPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private authService: AuthService,
+    private usuarioservice: UsuarioService,
     private router: Router){}
   
 
