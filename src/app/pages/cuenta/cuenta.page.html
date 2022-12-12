@@ -2,26 +2,32 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      
+
     </ion-buttons>
     <ion-title>Mi cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
- <br>
+<ion-content [fullscreen]="true">
 
-    <div class="avatar">
-     <ion-avatar  (click)="uploadAvatar()">
-          <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
-    <ng-template #placeholder_avatar>
-      <div class="no-avatar">
-        <p>Subir una foto</p>
-      </div>
-    </ng-template>
-       </ion-avatar>
-      </div>
+  <br>
+
+  <div class="avatar">
+    <ion-avatar (click)="uploadAvatar()">
+      <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+      <ng-template #placeholder_avatar>
+        <div class="no-avatar">
+          <p>Subir una foto</p>
+        </div>
+      </ng-template>
+    </ion-avatar>
+
+  </div>
+
+  <ion-label >
+    {{res.usuario.name}}
+  </ion-label>
+
 
 
 
