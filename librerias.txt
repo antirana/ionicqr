@@ -1,0 +1,1 @@
+--Codigo qr npm install @techiediaries/ngx-qrcode --save
