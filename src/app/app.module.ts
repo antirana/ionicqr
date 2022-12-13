@@ -16,10 +16,11 @@ import { Capacitor } from '@capacitor/core';
 import { indexedDBLocalPersistence, initializeAuth } from 'firebase/auth';
 import { getApp } from 'firebase/app';
 import {HttpClientModule} from '@angular/common/http';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule ,AppRoutingModule,
+  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule ,AppRoutingModule,AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => {
       if(Capacitor.isNativePlatform()){

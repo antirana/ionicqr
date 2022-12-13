@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>INGRESA TUS DATOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form novalidate>
+    <ion-list>
+      <!-- SOLO TEXTO -->
+
+      <ion-item counter="true" fill="outline">
+        <ion-label position="floating">NOMBRE</ion-label>
+        <ion-input type="text" placeholder="Ingresa tu nombre" [(ngModel)]="miModelo.soloTexto" name="name" #soloNombre="ngModel" pattern="[a-zA-Z]*" required maxlength="15"></ion-input>
+        <ion-note slot="error" *ngIf="soloNombre.errors">Formato nombre no válido</ion-note>
+      </ion-item>
+
+      <ion-item counter="true" fill="outline">
+        <ion-label position="floating">APELLIDO</ion-label>
+        <ion-input type="text" placeholder="Ingresa tu apellido" [(ngModel)]="miModelo.soloApellido" name="lastname" #soloApellido="ngModel" pattern="[a-zA-Z]*" required maxlength="15"></ion-input>
+        <ion-note slot="error" *ngIf="soloApellido.errors">Formato apellido no válido</ion-note>
+      </ion-item>
+
+      <div>
+        <ion-list>
+          <ion-radio-group [allowEmptySelection]="false" value="hombre">
+            <ion-list-header>
+              <ion-label>Escoge tu genero</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label>Hombre</ion-label>
+              <ion-radio slot="end" value="hombre"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>Mujer</ion-label>
+              <ion-radio slot="end" value="mujer"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>No especificar</ion-label>
+              <ion-radio slot="end" value="No especifica"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        </div>
+
+        <ion-item fill="outline">
+          <ion-label position="floating">EDAD</ion-label>
+          <ion-input type="text" placeholder="Ingresa tu edad" position="floating" [(ngModel)]="miModelo.edad" name="edad" #edad="ngModel" required digits gte="16" lte="100"></ion-input>
+          <ion-note slot="error" *ngIf="edad.errors">edad ingresada no valida</ion-note>
+        </ion-item>
+        <!-- EDAD: NUMERO MAYOR, MENOR IGUAL QUE -->
+      
+
+
+      <!-- SOLO NUMERO -->
+      <ion-item fill="outline">
+        <ion-label position="floating">celular</ion-label>
+        <ion-input type="text" placeholder="999999999" position="floating" [(ngModel)]="miModelo.solonumero" name="solonumero" #solonumero="ngModel" required digits required maxlength="9" required minlength="9" ></ion-input>
+        <ion-note slot="error" *ngIf="solonumero.errors">Ingresa tu numero de 9 digitos</ion-note>
+      </ion-item>
+      <!-- SOLO NUMERO -->
+
+      <ion-item counter="true" fill="outline">
+        <ion-label position="floating">DIRECCION</ion-label>
+        <ion-input type="text" placeholder="Ingresa tu direccion" [(ngModel)]="miModelo.soloDireccion" name="soloDireccion" #soloDireccion="ngModel" pattern="[a-zA-Z]*" required maxlength="20"></ion-input>
+        <ion-note slot="error" *ngIf="soloDireccion.errors">direccion no valida</ion-note>
+      </ion-item>
+
+      <!-- CORREO -->
+      <ion-item fill="outline">
+        <ion-label  position="floating">Correo</ion-label>
+        <ion-input type="text" placeholder="email@domain.com" position="floating" [(ngModel)]="miModelo.correo" name="correo" #correo="ngModel" required email></ion-input>
+        <ion-note slot="error" *ngIf="correo.errors">correo no valido</ion-note>
+      </ion-item>
+      <!-- CORREO -->
+
+      <ion-item>
+        <ion-label>Carrera</ion-label>
+        <ion-select placeholder="Escoge una carrera" text-wrap>
+          <ion-select-option value="Ingeniera en informatica" text-wrap>Ingeniera en informatica</ion-select-option>
+          <ion-select-option value="Tecnico en enfermeria" text-wrap>Tecnico en enfermeria</ion-select-option>
+          <ion-select-option value="Tecnico en Odontologia" text-wrap>Técnico en Odontología</ion-select-option>
+          <ion-select-option value="Técnico en Química y Farmacia">Técnico en Química y Farmacia</ion-select-option>
+          <ion-select-option value="Informática Biomédica">Informática Biomédica</ion-select-option>
+          <ion-select-option value="Analista Programador Computacional">Analista Programador Computacional</ion-select-option>
+          <ion-select-option value="Auditoría">Auditoría</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+
+      <ion-item fill="outline" counter="true">
+        <ion-label position="floating">descripcion</ion-label>
+        <ion-input type="text" placeholder="Describete" [(ngModel)]="miModelo.soloTexto" name="soloTexto" #soloTexto="ngModel" pattern="[a-zA-Z]*" required maxlength="15"></ion-input>
+        <ion-note slot="error" *ngIf="soloTexto.errors">descripcion no valida</ion-note>
+      </ion-item>
+
+    </ion-list>
+
+    
+  </form>
+  <br>
+  <div class="registro" style="margin: 0 auto;" >
+    <ion-button (click)="register()" style="--background: #ff987b; margin: 0 auto;">Registro</ion-button>
+  </div>
+  <br>
+  <br>
+</ion-content>
