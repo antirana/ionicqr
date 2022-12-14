@@ -23,9 +23,6 @@ export class AppComponent {
     { title: 'Salir', url:'/login' ,icon:'log-out'},
   ];
 
-
-
-
   constructor(
     private auth: Auth,
     private firestore: Firestore,
@@ -51,5 +48,4 @@ export class AppComponent {
   async logout(){
     return signOut(this.auth);
   }
-
 }

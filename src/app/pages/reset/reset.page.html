@@ -1,0 +1,26 @@
+
+  <ion-content>
+    <div class="header">
+      <h1>Restablecer contraseña</h1>
+    </div>
+  
+    <div class="form">
+      <form (ngSubmit)="valida()"  [formGroup]="formularioReset">
+        <ion-item class="ion-margin-bottom">
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Formato Email no válido</ion-note>
+      </ion-item>
+  
+      </form>
+    </div>
+  
+    <div class="button" style="margin: 0 auto;">
+      <ion-button expand="full"  type="submit" (click)="valida()" [disabled]="!formularioReset.valid">Enviar</ion-button>
+    </div>
+
+    <div class="footer">
+      <h3 [routerLink]="['/login']"><span>Volver al login</span></h3>
+    </div>
+  </ion-content>
+  
+

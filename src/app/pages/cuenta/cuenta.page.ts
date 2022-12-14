@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AvatarService } from 'src/app/services/avatar.service';
 import { Auth, EmailAuthCredential, user, User } from '@angular/fire/auth';
 import { Usuario } from 'src/app/services/usuario';
+import {FormControl,Validators} from '@angular/forms';
+import { UsuarioService} from 'src/app/services/usuario.service';
 
 
 
@@ -14,42 +16,56 @@ import { Usuario } from 'src/app/services/usuario';
   templateUrl: './cuenta.page.html',
   styleUrls: ['./cuenta.page.scss'],
 })
-export class CuentaPage {
+export class CuentaPage implements OnInit {
   profile:any=null;
-  usuarioi: Usuario={
+  Uid:string;
+  private res;
+
+  alumno = false;
+  admin = false;
+
+
+  nombre = new FormControl('');
+  genero = new FormControl('');
+
+  usuario : Usuario ={
+    uid: '',
     name: '',
     lastname: '',
     gender: '',
-    age: 0,
+    age: null,
     email: '',
     celular: '',
-    image: '',
     direccion: '',
     carrera: '',
-    descripcion: ''
-  };
+    descripcion: '',
+    privilegio: ''
+  }
 
   constructor(private authService:AuthService,
     private avatarService:AvatarService,
     private alertCtrl:AlertController,
     private toastCtrl:ToastController,
+    private usuarioService:UsuarioService,
     private loadingCtrl:LoadingController,
     private router:Router,
     private auth: Auth) {
       this.loadProfile()
+      this.getUserProfile();
       
      }
+     ngOnInit() {
+      this.getUsuario();
+    }
 
      async getUserProfile(){
       const user = this.auth.currentUser;
-      return this.usuarioi;
+      this.Uid= user.uid;
       
-      
+      return this.Uid;
+
     }
     
-
-
-
 
   loadProfile(){
     this.avatarService.getUserProfile().subscribe(respuesta => {
@@ -99,4 +115,19 @@ export class CuentaPage {
     await alert.present();
   }
 
-}
+   getUsuario(){
+    
+    this.usuarioService.getUsuarioById(this.Uid).subscribe(respuesta => {
+      this.res = respuesta;
+      let priv = this.res.usuario.privilegio;
+      if(priv == "alumno"){
+        this.alumno = true;
+
+      }
+      else if(priv == "admin"){
+        this.admin= true;}
+      
+    });
+  }
+    
+  }
