@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, addDoc, updateDoc, deleteDoc, setDoc, } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, addDoc, updateDoc, deleteDoc, setDoc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Usuario } from './usuario';
 import { Auth } from '@angular/fire/auth';
@@ -10,48 +10,50 @@ import { Auth } from '@angular/fire/auth';
 })
 export class UsuarioService {
 
-  constructor(private firestore: Firestore,private auth:Auth) { }
+  constructor(private firestore: Firestore, private auth: Auth) { }
 
-  getUsuarios():Observable<Usuario[]>{
-    const usuariosRef = collection(this.firestore,'usuarios');
-    return collectionData(usuariosRef, {idField:'id'}) as Observable<Usuario[]>;
+  getUsuarios(): Observable<Usuario[]> {
+    const usuariosRef = collection(this.firestore, 'usuarios');
+    return collectionData(usuariosRef, { idField: 'id' }) as Observable<Usuario[]>;
   }
 
-  getUsuarioById(id:string):Observable<Usuario>{
-    const usuarioRef = doc(this.firestore,`usuarios/${id}`);
-    return docData(usuarioRef, {idField:'id'}) as Observable<Usuario>;
+  getUsuarioById(id: string): Observable<Usuario> {
+    const usuarioRef = doc(this.firestore, `usuarios/${id}`);
+    return docData(usuarioRef,) as Observable<Usuario>;
   }
 
 
-  async addUsuario(usuario:Usuario) {
+
+  async addUsuario(usuario: Usuario) {
     const user = this.auth.currentUser;
     const userDocRef = doc(this.firestore, `usuarios/${user?.uid}`);
-      await setDoc(userDocRef,{
-        usuario,
-      });
+    await setDoc(userDocRef, {
+      usuario,
+    });
 
-    
+
   }
 
 
-  updateUsuario(usuario:Usuario) {
-    const usuarioRef = doc(this.firestore, `usuarios/${usuario.id}`);
-    return updateDoc(usuarioRef, 
+  updateUsuario(usuario: Usuario) {
+    const user = this.auth.currentUser;
+    const usuarioRef = doc(this.firestore, `usuarios/${user?.uid}`);
+    return updateDoc(usuarioRef,
       {
-        name:usuario.name,
-        lastname:usuario.lastname,
-        gender:usuario.gender,
-        age:usuario.age,
-        email:usuario.email,
-        image:usuario.image
+        name: usuario.name,
+        lastname: usuario.lastname,
+        gender: usuario.gender,
+        age: usuario.age,
+        email: usuario.email,
       }
     );
   }
 
-  deleteUsuario(usuario:Usuario){
-    const usuarioRef = doc(this.firestore, `usuarios/${usuario.id}`);
+  deleteUsuario(usuario: Usuario) {
+    const user = this.auth.currentUser;
+    const usuarioRef = doc(this.firestore, `usuarios/${user?.uid}`);
     return deleteDoc(usuarioRef);
   }
 
-  
+
 }

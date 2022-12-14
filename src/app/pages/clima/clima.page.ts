@@ -17,6 +17,7 @@ export class ClimaPage implements OnInit {
   getWeatherData(){
     this.weatherAPI.getWeatherData().subscribe((response)=>{
       this.res = response;
-      console.log(this.res);
+
+
     })};
 }

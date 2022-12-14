@@ -1,0 +1,7 @@
+npm install @capacitor-community/barcode-scanner --legacy-peer-deps
+ionic build
+
+npm install @capacitor/android --force
+npx cap add android
+npx cap copy android
+npx cap sync android

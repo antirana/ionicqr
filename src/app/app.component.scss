@@ -120,3 +120,7 @@ ion-menu ion-content {
   ion-alert{
     --width: 400px;
   }
+  body.scanner-active {
+    --background: transparent;
+    --ion-background-color: transparent;
+  }
