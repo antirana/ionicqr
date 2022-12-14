@@ -10,4 +10,20 @@ export interface Usuario{
     image:string;
     direccion:string;
     carrera:string;
+<<<<<<< Updated upstream
     descripcion:string;}
+=======
+    descripcion:string;
+    privilegio:string;}
+
+export interface Privilegio{
+    privilegio:Rol;
+
+    
+}
+export interface Asistencia{
+    fecha: string;
+    mensaje: string;
+}
+type Rol = "admin" | "alumno" ;
+>>>>>>> Stashed changes

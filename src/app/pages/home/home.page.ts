@@ -4,6 +4,7 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 import { Usuario } from 'src/app/services/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AvatarService } from 'src/app/services/avatar.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,6 +12,10 @@ import { AvatarService } from 'src/app/services/avatar.service';
 })
 export class HomePage {
   Uid:string;
+  user=false;
+  private res;
+  handlerMessage = '';
+  roleMessage = '';
   usuario: Usuario = {
     uid:'',
     id:'',
@@ -27,18 +32,29 @@ export class HomePage {
 
   };
 
-  constructor(private auth: Auth,private usuarioService:UsuarioService, private alertCtrl:AlertController,
+  constructor(private auth: Auth,private usuarioService:UsuarioService, private alertCtrl:AlertController,private router: Router,
     private modalCtrl:ModalController, private toastCtrl:ToastController
-    ) {this.getUserProfile()}
+    ) {this.getUserProfile()
+      this.getUsuario()}
 
   async getUserProfile(){
     const user = this.auth.currentUser;
     this.Uid = user.uid;
-    console.log(this.Uid);
-    
-    
+        
   }
+  getUsuario(){
+    
+    this.usuarioService.getUsuarioById(this.Uid).subscribe(respuesta => {
+      this.res = respuesta;
+      if(!respuesta){
+        
+        this.presentAlert()
+      }
+      else{
+        
+      }
 
+<<<<<<< Updated upstream
   
   async addUsuario(){
 
@@ -123,9 +139,12 @@ export class HomePage {
           }
         }
       ]
+=======
+>>>>>>> Stashed changes
     });
-    alert.present();
   }
+  
+  
   async toasPresent(message:string){
     const toast = await this.toastCtrl.create({
       message:message,
@@ -133,4 +152,29 @@ export class HomePage {
     });
     toast.present();
   }
+
+  //pedir datos si no ha ingresado datos
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'NO HAZ INGRESADO TUS DATOS',
+      buttons: [
+        {
+          text: 'INGRESAR',
+          role: 'confirm',
+          handler: () => {
+            this.handlerMessage = 'Alert confirmed';
+            this.router.navigateByUrl('/datos');
+
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+
+  }
+
+
 }
+

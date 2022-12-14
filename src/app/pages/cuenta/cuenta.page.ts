@@ -16,7 +16,22 @@ import { Usuario } from 'src/app/services/usuario';
 })
 export class CuentaPage {
   profile:any=null;
+<<<<<<< Updated upstream
   usuarioi: Usuario={
+=======
+  Uid:string;
+  private res;
+
+  alumno = false;
+  admin = false;
+
+
+  nombre = new FormControl('');
+  genero = new FormControl('');
+
+  usuario : Usuario ={
+    uid: '',
+>>>>>>> Stashed changes
     name: '',
     lastname: '',
     gender: '',
@@ -45,6 +60,10 @@ export class CuentaPage {
       return this.usuarioi;
       
       
+<<<<<<< Updated upstream
+=======
+      return this.Uid;
+>>>>>>> Stashed changes
     }
     
 
@@ -99,4 +118,23 @@ export class CuentaPage {
     await alert.present();
   }
 
+<<<<<<< Updated upstream
 }
+=======
+   getUsuario(){
+    
+    this.usuarioService.getUsuarioById(this.Uid).subscribe(respuesta => {
+      this.res = respuesta;
+      let priv = this.res.usuario.privilegio;
+      if(priv == "alumno"){
+        this.alumno = true;
+
+      }
+      else if(priv == "admin"){
+        this.admin= true;}
+      
+    });
+  }
+    
+  }
+>>>>>>> Stashed changes

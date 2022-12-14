@@ -2,15 +2,72 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+<<<<<<< Updated upstream
       
+=======
+>>>>>>> Stashed changes
     </ion-buttons>
     <ion-title>Mi cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<<<<<<< Updated upstream
 <ion-content>
   
  <br>
+=======
+<ion-content [fullscreen]="true">
+
+  <br>
+
+  <div class="avatar" style="margin: 0 auto;">
+    <ion-avatar (click)="uploadAvatar()">
+      <img *ngIf="profile?.imageUrl; else placeholder_avatar;" [src]="profile.imageUrl" />
+      <ng-template #placeholder_avatar>
+        <div class="no-avatar">
+          <p>Subir una foto</p>
+        </div>
+      </ng-template>
+    </ion-avatar>
+
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <div>
+    <ion-item>
+      <ion-badge slot="start">NOMBRE</ion-badge>
+      <ion-label text-wrap>{{res.usuario.name}} {{res.usuario.lastname}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-badge slot="start">EDAD</ion-badge>
+      <ion-label text-wrap>{{res.usuario.age}} </ion-label>
+    </ion-item>
+    <ion-item>
+
+      <ion-badge slot="start">GENERO</ion-badge>
+      <ion-label text-wrap>{{res.usuario.gender}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+
+      <ion-badge slot="start">CELULAR</ion-badge>
+      <ion-label text-wrap>{{res.usuario.celular}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-badge slot="start">CARRERA</ion-badge>
+      <ion-label text-wrap>{{res.usuario.carrera}} </ion-label>
+    </ion-item>
+    <ion-item>
+
+      <ion-badge slot="start">DIRECCION</ion-badge>
+      <ion-label text-wrap>{{res.usuario.direccion}} </ion-label>
+    </ion-item>
+  </div>
+>>>>>>> Stashed changes
 
     <div class="avatar">
      <ion-avatar  (click)="uploadAvatar()">
