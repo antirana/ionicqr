@@ -7,6 +7,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>hola</h1>
+<ion-content
+  [fullscreen]="true"
+  [style.--background]="scanActive?'#00000000':'#ffffff'"
+>
+<ion-card>
+  <ion-card-content *ngIf="admin">
+      <ion-input [(ngModel)]="code" type="text" placeholder="Enter code here"></ion-input>
+
+      <ion-button (click)="process();" expand="block" class="primary">
+        Generar codigo qr
+      </ion-button>
+      <img *ngIf="displayQrCode()" [src]="generated" class="codigo"/>
+  </ion-card-content>
+</ion-card>
+  <ion-button expand="full" (click)="startScanner()" [hidden]="scanActive" *ngIf="alumno">
+    SCAN nuevo nuevo
+  </ion-button>
+  <ion-row class="scan-button" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()" >Stop</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="scan-box" [hidden]="!scanActive"></div>
+
 </ion-content>

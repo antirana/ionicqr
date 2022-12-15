@@ -56,9 +56,14 @@ const routes: Routes = [
     path: 'cuenta',
     loadChildren: () => import('./pages/cuenta/cuenta.module').then( m => m.CuentaPageModule)
   },
-
-
-
+  {
+    path: 'reset',
+    loadChildren: () => import('./pages/reset/reset.module').then( m => m.ResetPageModule)
+  },
+  {
+    path: 'datos',
+    loadChildren: () => import('./pages/datos/datos.module').then( m => m.DatosPageModule)
+  },
 
 
 ];

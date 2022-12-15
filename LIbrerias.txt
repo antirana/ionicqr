@@ -1,0 +1,5 @@
+npm install ng2-validation --save
+npm install @techiediaries/ngx-qrcode --save
+npm install phonegap-plugin-barcodescanner 
+npm install @ionic-native/barcode-scanner
+ionic cap sync
